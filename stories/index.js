@@ -6,6 +6,7 @@ import NewsItem from '../src/components/newsItem';
 import NewsList from '../src/components/newsList';
 import { action } from "@storybook/addon-actions";
 
+
 const post = {
     id: 1,
     title: 'Post 1.',
@@ -15,7 +16,8 @@ const post = {
     upvotes: 10
 };
 
-storiesOf("Hacker App/News Form", module).add("default", () => <NewsForm />);
+storiesOf("Hacker App/News Form", module).add("default", () => (
+    <NewsForm post={post} handleAdd={action('Post Added')} />));
 
 storiesOf("Hacker App/News Item", module)
     .add("default", () => <NewsItem post={post} upvoteHandler={action("upvoted")} />)
