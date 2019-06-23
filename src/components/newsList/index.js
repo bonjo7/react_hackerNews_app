@@ -3,9 +3,12 @@ import NewsItem from '../newsItem/';
 
 export default class NewsList extends Component {
     render() {
-        const postList = this.props.posts.map(p => (
-            <NewsItem key={p.title} post={p} />
-        ));
+        let postList = this.props.posts.map(
+            (post,index) => 
+                <NewsItem key={index} 
+                    post={post} 
+                    upvoteHandler={this.props.upvoteHandler} /> 
+            );
         return (
             <Fragment>{postList}</Fragment>
 

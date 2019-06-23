@@ -3,18 +3,24 @@ import './newsItem.css';
 import "../../fontawesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+
 export default class NewsItem extends Component {
-  render() {
+    handleVote = () => this.props.upvoteHandler(this.props.post.id);
+
+    state = {
+        title: '', author: '', link: ''
+    };
+    render() {
         let line = this.props.post.link ? (
             <a href={this.props.post.link}>{this.props.post.title}</a>
         ) : (
-            <span>{this.props.post.title}</span>
-        );
+                <span>{this.props.post.title}</span>
+            );
         return (
             <Fragment>
-                <span className="ptr" >
-                    <FontAwesomeIcon icon={["fas", "thumbs-up"]} size="2x" />
-                {` ${this.props.post.upvotes}`}
+                <span className="ptr" onClick={this.handleVote}>
+                <FontAwesomeIcon icon={["fas", "thumbs-up"]} size="2x" />
+                    {` ${this.props.post.upvotes}`}
                 </span>
                 <span className="newsitem">
                     {line}
